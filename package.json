@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "puppeteer": "^24.39.1"
+  },
+  "scripts": {
+    "gcp-build": "node node_modules/puppeteer/install.js"
   }
 }
