@@ -95,7 +95,7 @@ async function checkout() {
         // Create a new page with the default browser context 
         const page = await browser.newPage(); 
         // Go to the target website 
-        await page.goto(pageUrl); 
+        await page.goto(pageUrl, {timeout: 0}); 
         // await new Promise(resolve => setTimeout(resolve, 10000));
 	    // const page = await initBrowser(); 
 	    await getDataFromSite(page, msgSendArray);
