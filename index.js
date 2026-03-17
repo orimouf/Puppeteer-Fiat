@@ -70,9 +70,9 @@ async function getDataFromSite(page) {
     const found = newUrlsProductArray.find(ele => ele === matchingUrl);
 
     if (found === undefined) {
-        Match = true;
-    } else {
         Match = false;
+    } else {
+        Match = true;
     }
 
     if (Match) {
