@@ -42,30 +42,6 @@ async function getDataFromSite(page) {
     // console.log("---------------------")
     // console.log(newUrlsProductArray);
 
-    const sendWhatsappMsg = (url) => {
-         
-            // Download the helper library from https://www.twilio.com/docs/node/install
-        const twilio = require("twilio"); // Or, for ESM: import twilio from "twilio";
-
-        // Find your Account SID and Auth Token at twilio.com/console
-        // and set the environment variables. See http://twil.io/secure
-        const accountSid = process.env.ACCOUNT_SID;
-        const authToken = process.env.AUTH_TOKEN;
-        const client = twilio(accountSid, authToken);
-
-        async function createMessage() {
-        const message = await client.messages.create({
-            body: url,
-            from: "whatsapp:+14155238886",
-            to: "whatsapp:+213791602498",
-        })
-
-        console.log(message.body);
-        }
-
-        createMessage(); 
-    }
-
     var Match = false
     const found = newUrlsProductArray.find(ele => ele === matchingUrl);
 
@@ -81,6 +57,8 @@ async function getDataFromSite(page) {
         // sendWhatsappMsg(pageUrl);
         sendEmail(toEmail, fromEmail, logo, false)
     }
+
+    page.close()
 
     // wait 15s to reload
     // await new Promise(resolve => setTimeout(resolve, 15000));
