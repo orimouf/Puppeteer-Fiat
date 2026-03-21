@@ -79,7 +79,7 @@ async function getDataFromSite(page) {
         console.log("No New Product Found!");
     } else {
         // sendWhatsappMsg(pageUrl);
-        sendEmail(toEmail, fromEmail, logo)
+        sendEmail(toEmail, fromEmail, logo, false)
     }
 
     // wait 15s to reload
@@ -110,7 +110,7 @@ async function checkout() {
     }
 } 
 
-function sendEmail(toEmail, fromEmail, logo) {
+function sendEmail(toEmail, fromEmail, logo, check) {
 console.log("sending Email check ...");
 
     request.post(
@@ -118,7 +118,7 @@ console.log("sending Email check ...");
         { json : {
             service_id: "service_bukaqyq",
             user_id: "Eow6_b5X8Og5saFTt",
-            template_id: "template_7i0khkn",
+            template_id: (check) ? "template_81w8pyi" : "template_7i0khkn",
             template_params: {
               to_name: toEmail,
               email: fromEmail,
@@ -147,11 +147,14 @@ function logMessage() {
    });
 
    // Schedule the cron job 30 Min to run every minute
-   cron.schedule('*/30 * * * *', () => {
-    console.log('Cron job 30 min executed at:', new Date().toLocaleString());
-    // sending Email to EmailJS
-    sendEmail(toEmail, fromEmail, logo)
-   });
+
+   //-----------
+//    cron.schedule('*/15 * * * *', () => {
+//     console.log('Cron job 30 min executed at:', new Date().toLocaleString());
+//     // sending Email to EmailJS
+//     sendEmail(toEmail, fromEmail, logo, true)
+//    });
+   //--------
     // console.log(titles ); 
 	// await browser.close(); 
 
