@@ -29,9 +29,9 @@ app.listen(app.get('port'), function() {
 });
 
 async function getDataFromSite(page) {
-    console.log("page open ...");
+    // console.log("page open ...");
     await new Promise(resolve => setTimeout(resolve, 4000));
-    console.log("Geting Data ...");
+    // console.log("Geting Data ...");
     const newUrlsProductArray = await page.evaluate(() => {
 
         videoElement = document.querySelector("video").innerHTML //"section[id='ID06-CanvasMedia-0effb7e59b']"
@@ -39,8 +39,8 @@ async function getDataFromSite(page) {
 
         return wordsArray
     })
-    console.log("---------------------")
-    console.log(newUrlsProductArray);
+    // console.log("---------------------")
+    // console.log(newUrlsProductArray);
 
     const sendWhatsappMsg = (url) => {
          
